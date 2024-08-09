@@ -70,7 +70,8 @@ const Chat = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
+    <div style={{backgroundColor:'rgb(36, 36, 36);'
+    }}className="flex p-5 h-screen flex-col items-center justify-center ">
       <div className="flex h-full flex-col gap-3 p-2">
         <div className="flex h-full flex-col gap-2 overflow-y-auto">
           {messages.map((msg, idx) => (
@@ -81,9 +82,11 @@ const Chat = () => {
               }`}
             >
               <div
+                
                 className={`${
-                  msg.role === "user" ? "bg-green-300" : "bg-blue-300"
-                } rounded-lg p-3`}
+
+                  msg.role === "user" ? "bg-green-500" : "bg-blue-500"
+                } rounded-lg p-3 text-white`}
               >
                 {msg.content}
               </div>
@@ -92,7 +95,7 @@ const Chat = () => {
           <div ref={messagesEndRef} />
         </div>
 
-        <div className="sticky bottom-0 flex flex-row gap-2 p-2">
+        <div className="sticky bottom-0 flex flex-row gap-2 p-2 rounded">
           <input
             aria-label="message input box"
             placeholder="Type message here..."
@@ -100,12 +103,16 @@ const Chat = () => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-grow px-3 outline outline-gray-300"
+            style={{backgroundColor:'rgb(26, 26, 26)'
+            }}
+            className="flex-grow px-3 rounded-2xl text-white placeholder-gray-200"
           />
           <button
             aria-label="send message button"
             onClick={sendMessage}
-            className="bg-gray-300 p-4"
+            style={{backgroundColor:'rgb(20, 20, 20)'
+            }}
+            className=" p-4 rounded-2xl text-white"
           >
             Send
           </button>
