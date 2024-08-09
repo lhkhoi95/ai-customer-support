@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.624.0",
+    "ai-customer-support": "file:",
     "next": "14.2.5",
     "openai": "^4.55.1",
     "react": "^18",
