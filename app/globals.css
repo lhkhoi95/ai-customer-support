@@ -28,6 +28,7 @@ html, body {
 
 /* Body styling */
 body {
+<<<<<<< Updated upstream
   font-family: var(--font-family);
   color: var(--text-color);
   background-color: var(--background-color);
@@ -141,4 +142,12 @@ button:active {
   input[type="text"], button {
     width: 100%;
   }
+=======
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(var(--background-end-rgb))
+  ) rgb(var(--background-start-rgb));
+>>>>>>> Stashed changes
 }
