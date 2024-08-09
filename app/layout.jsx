@@ -1,5 +1,8 @@
+// layout.jsx
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider, SignedOut, SignInButton, SignedIn, UserButton } from '@clerk/nextjs';
+import Link from 'next/link'; // Import Link from next/link
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,8 +13,25 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <header className="header">
+            <Link href="/" className="header-title">AI Chat Assistant</Link>
+            <div className="header-buttons">
+              <SignedOut>
+                <SignInButton className="sign-in-button" />
+              </SignedOut>
+              <SignedIn>
+                <UserButton className="user-button" />
+              </SignedIn>
+            </div>
+          </header>
+          <main className="chat-container">
+            {children}
+          </main>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

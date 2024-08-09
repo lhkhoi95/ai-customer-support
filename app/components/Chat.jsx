@@ -82,7 +82,7 @@ const Chat = () => {
             >
               <div
                 className={`${
-                  msg.role === "user" ? "bg-green-300" : "bg-blue-300"
+                  msg.role === "user" ? "bg-user-message" : "bg-assistant-message"
                 } rounded-lg p-3`}
               >
                 {msg.content}
@@ -105,7 +105,7 @@ const Chat = () => {
           <button
             aria-label="send message button"
             onClick={sendMessage}
-            className="bg-gray-300 p-4"
+            className="bg-button-bg-color text-button-text-color p-4"
           >
             Send
           </button>
