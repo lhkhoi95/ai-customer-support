@@ -2,151 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Define color variables */
-:root {
-  --foreground-color: #333;
-  --background-color: #363737;
-  --user-bg-color: #5db841;
-  --assistant-bg-color: #1696c0;
-  --input-bg-color: #232222;
-  --button-bg-color: #121212;
-  --button-hover-bg-color: #171717;
-  --button-active-bg-color: #141414;
-  --button-text-color: #ffffff;
-  --text-color: #ffffff;
-  --border-color: #000000;
-  --font-family: 'Roboto', sans-serif;
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden; /* Prevent unwanted scrolling */
-}
-
-/* Body styling */
-body {
-<<<<<<< Updated upstream
-  font-family: var(--font-family);
-  color: var(--text-color);
-  background-color: var(--background-color);
-  overflow-y: auto; /* Allow vertical scrolling if necessary */
-}
-
-/* Header Styles */
-.header {
-  position: fixed; /* Fixes the header at the top */
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #333333; /* Dark gray background or use a specific color */
-  color: #ffffff; /* White text color for contrast */
-  display: flex;
-  justify-content: space-between; /* Space between title and buttons */
-  align-items: center; /* Align items vertically centered */
-  padding: 1rem 2rem; /* Adds padding around the header; adjust as needed */
-  height: 60px; /* Set a specific height for the header */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
-  z-index: 1000; /* Ensure it stays on top */
-}
-
-/* Header Title Styles */
-.header-title {
-  font-size: 1.5rem; /* Adjust size as needed */
-  font-weight: bold;
-  color: #ffffff; /* White color for the title for contrast */
-}
-
-/* Ensure that the SignInButton is aligned to the right */
-.sign-in-button {
-  /* Additional styling as needed */
-}
-
-/* Ensure that the UserButton is aligned to the right */
-.user-button {
-  /* Additional styling as needed */
-}
-
-/* Main content should have padding to avoid being hidden under the header */
-main.chat-container {
-  padding-top: 4rem; /* Adjust based on the height of your header */
-  margin: 0 auto; /* Center the content and prevent it from overflowing */
-}
-
-/* Chat Bubble Styles */
-.bg-user-message {
-  background-color: var(--user-bg-color);
-  color: var(--text-color);
-  padding: 0.75rem;
-  border-radius: 1.5rem;
-  margin-bottom: 0.5rem;
-  max-width: 70%;
-  text-align: left;
-  font-size: 1rem;
-}
-
-.bg-assistant-message {
-  background-color: var(--assistant-bg-color);
-  color: var(--text-color);
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  margin-bottom: 0.5rem;
-  max-width: 70%;
-  text-align: left;
-  font-size: 1rem;
-}
-
-/* Input Field Styles */
-input[type="text"] {
-  background-color: var(--input-bg-color);
-  border: 1px solid var(--border-color);
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  color: var(--text-color);
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-/* Button Styles */
-button {
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-size: 1rem;
-  text-align: center;
-  display: inline-block;
-}
-
-button:hover {
-  background-color: var(--button-hover-bg-color);
-}
-
-button:active {
-  background-color: var(--button-active-bg-color);
-}
-
-/* Ensure responsiveness */
-@media (max-width: 768px) {
-  .bg-user-message, .bg-assistant-message {
-    max-width: 90%;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
+} */
 
-  input[type="text"], button {
-    width: 100%;
-  }
-=======
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-    to bottom,
-    transparent,
-    rgb(var(--background-end-rgb))
-  ) rgb(var(--background-start-rgb));
->>>>>>> Stashed changes
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+} */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
 }
