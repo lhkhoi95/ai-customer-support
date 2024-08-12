@@ -17,15 +17,19 @@ import { sql } from "@vercel/postgres";
 // Let the model study the Youtube video
 export async function feedModel(prevState, url) {
   // await pineconeIndex.deleteAll({ deleteAll: true, namespace: "default" });
-  // Check if the URL is a valid Youtube URL
-  if (!isValidYoutubeUrl(url)) {
+  let videoId;
+  try {
+    // Check if the URL is a valid Youtube URL
+    videoId = YoutubeLoader.getVideoID(url);
+  } catch (error) {
     return { message: "Invalid Youtube URL" };
   }
+
   const isExisting = await urlExists(url);
   if (!isExisting) {
     await storeUrl(url);
     try {
-      const texts = await getYoutubeTranscript(url);
+      const texts = await getYoutubeTranscript(videoId);
       const docs = await getTextSplitter(texts);
       await insertDataToPinecone(docs);
     } catch (error) {
@@ -47,11 +51,8 @@ export async function feedModel(prevState, url) {
   redirect("/chatbot/youtube");
 }
 
-async function getYoutubeTranscript(url) {
-  const loader = YoutubeLoader.createFromUrl(url, {
-    language: "en",
-    addVideoInfo: true,
-  });
+async function getYoutubeTranscript(videoId) {
+  const loader = new YoutubeLoader({ videoId: videoId });
 
   const docs = await loader.load();
   return docs;
