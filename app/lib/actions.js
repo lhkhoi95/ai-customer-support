@@ -53,12 +53,8 @@ async function getYoutubeTranscript(url) {
     addVideoInfo: true,
   });
 
-  try {
-    const docs = await loader.load();
-    return docs;
-  } catch (error) {
-    console.error("Error loading transcript:", error);
-  }
+  const docs = await loader.load();
+  return docs;
 }
 
 async function getTextSplitter(texts) {

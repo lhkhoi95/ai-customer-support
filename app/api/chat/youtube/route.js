@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
-import OpenAI from 'openai';
-const { OpenAIEmbeddings } = require('@langchain/openai');
-const { Pinecone } = require('@pinecone-database/pinecone');
+import { NextResponse } from "next/server";
+import OpenAI from "openai";
+const { OpenAIEmbeddings } = require("@langchain/openai");
+const { Pinecone } = require("@pinecone-database/pinecone");
 
-const EMBED_MODEL = 'text-embedding-3-small';
-const INDEX_NAME = 'ai-customer-support';
+const EMBED_MODEL = "text-embedding-3-small";
+const INDEX_NAME = "ai-customer-support";
 const pc = new Pinecone({
   apiKey: process.env.PINECONE_API_KEY,
 });
@@ -20,7 +20,7 @@ export async function POST(req) {
   const chatHistory = data
     .slice(0, data.length - 1)
     .map((item) => item.content)
-    .join('\n');
+    .join("\n");
 
   const embeddings = new OpenAIEmbeddings({
     openAIApiKey: process.env.OPENAI_API_KEY,
@@ -31,7 +31,7 @@ export async function POST(req) {
 
   const queryResponse = await pineconeIndex.query({
     vector: queryEmbedding,
-    topK: 3,
+    topK: 10,
     includeMetadata: true,
   });
 
@@ -39,7 +39,7 @@ export async function POST(req) {
     .map((match, index) => {
       return `[${index + 1}] ${match.metadata.text}`;
     })
-    .join('\n\n');
+    .join("\n\n");
 
   const prompt = `You are an AI assistant that answers questions based ONLY on the following context from a YouTube video transcript. Do not use any external knowledge.
 
@@ -65,14 +65,14 @@ Instructions:
 Answer:`;
 
   const completion = await openai.chat.completions.create({
-    model: 'gpt-4o-mini',
+    model: "gpt-4o-mini",
     messages: [
       {
-        role: 'system',
+        role: "system",
         content: SYSTEM_PROMPT,
       },
       {
-        role: 'user',
+        role: "user",
         content: prompt,
       },
       ...data,
