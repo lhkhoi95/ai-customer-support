@@ -34,7 +34,7 @@ export async function feedModel(prevState, url) {
 
       if (
         error.message.includes(
-          "Cannot read properties of undefined (reading 'filter')"
+          "Failed to get YouTube video transcription: [YoutubeTranscript]"
         )
       ) {
         return { message: "This video does not have transcripts." };
